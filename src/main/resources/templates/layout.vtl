@@ -21,16 +21,7 @@
             <span class="icon-bar"></span>
           </button>
         </div>
-
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          #if($words.size() > 0)
-          <form class="navbar-form navbar-right">
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Search">
-            </div>
-            <button type="submit" class="btn btn-default">Submit</button>
-          </form>
-          #end
           <ul class="nav navbar-nav navbar-right">
             <li><a href="/">All words</a></li>
             <li><a href="/word/new">New word</a></li>
@@ -39,6 +30,16 @@
               <li><a href="/word/$word.getId()/def/new">Add new definition</a></li>
             #end
           </ul>
+          #if($words)
+            #if($words.size() > 0)
+            <form class="navbar-form navbar-right" action="/search" method="post">
+              <div class="form-group">
+                <input name="search-string" type="text" class="form-control" placeholder="Search">
+              </div>
+              <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+            #end
+          #end
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>

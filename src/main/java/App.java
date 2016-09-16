@@ -1,4 +1,6 @@
 //TODO: endorse definitions? - sort by number of endorsements
+//TODO: create class that deals with stop words for search
+//TODO: create word categories (for vocab lists?) - would this be a separate object or a property of words?
 
 import java.util.HashMap;
 import java.util.Map;
@@ -30,6 +32,17 @@ public class App {
       model.put("newWord", newWord);
       model.put("words", Word.sort());
       model.put("template", "templates/index.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/search", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      String searchStringOriginal = request.queryParams("search-string");
+      String formatString = searchStringOriginal.trim().toLowerCase().replaceAll("\\p{P}", "");
+      model.put("search-string", searchStringOriginal);
+      model.put("format-string", formatString);
+      model.put("results", Word.findByDef(formatString));
+      model.put("template", "templates/search.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 

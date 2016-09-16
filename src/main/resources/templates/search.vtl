@@ -1,0 +1,13 @@
+<h1>Search results for "$search-string"</h1>
+#if($results.size() > 0)
+  #foreach($result in $results)
+    <h3><a href="/word/$result.getId()">$result.getWord()</a></h3>
+      <ul class="word-defs">
+      #foreach($definition in $result.searchDefinitions($format-string))
+        <li>$definition.getDefString()</li>
+      #end
+      </ul>
+  #end
+#else
+<h3>No Words Found :( Please try again</h3>
+#end
