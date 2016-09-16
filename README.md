@@ -8,11 +8,11 @@ _A java web app using the Spark frame work in which users can add words and defi
 
 ## Setup/Installation Requirements
 
-* _App is deployed on Heroku [here]()_
-* _Alternately copy the repository from GitHub_
+* _Copy the repository from GitHub_
 * _Open in code editor of your choice_
 * _Make sure you have gradle installed!_
 * _gradle will download and install junit and spark_
+* _gradle run will deploy the site to port 4567 by default_
 
 ## Technologies used
 

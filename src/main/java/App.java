@@ -1,6 +1,7 @@
-//TODO: endorse definitions? - sort by number of endorsements
-//TODO: create class that deals with stop words for search
+//TODO: endorse definitions? - sort by number of endorsements - remove if get to low?
+//TODO: class that deals with stop words for search
 //TODO: create word categories (for vocab lists?) - would this be a separate object or a property of words?
+//TODO: allow users to guess definitions - award points for more accurate guesses (flash card program)
 
 import java.util.HashMap;
 import java.util.Map;

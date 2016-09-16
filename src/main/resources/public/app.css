@@ -1,7 +1,9 @@
 body {
+  background-image: url(images/words2.jpg);
+  background-size: cover;
   background-color: #326771;
   color: white;
-  font-family: 'Gudea', sans-serif;
+  font-family: 'Arimo', sans-serif;
 }
 
 h1, h2 {
