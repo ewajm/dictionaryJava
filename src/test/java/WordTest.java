@@ -128,4 +128,15 @@ public class WordTest{
     assertTrue(Word.findByDef("definition").size() > 0);
     assertTrue(!Word.findByDef("definition").contains(word2));
   }
+
+  @Test
+  public void findByDef_worksWithMultipleWordSearch_true(){
+    Word word = new Word("word");
+    Definition definition = new Definition("something with words");
+    word.addDefinition(definition);
+    Word word2 = new Word("word2");
+    Definition definition2 = new Definition("something else and stuff");
+    word2.addDefinition(definition2);
+    assertEquals(1, Word.findByDef("something else").size());
+  }
 }

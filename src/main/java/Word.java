@@ -58,8 +58,11 @@ public class Word {
   }
 
   public static List<Word> findByDef(String searchString){
-    List<Word> foundWords = null;
-    foundWords = instances.stream().filter(instance -> (instance.searchDefinitions(searchString).size() > 0)).collect(Collectors.toList());
+    List<Word> foundWords = instances;
+    String[] searchTerms = searchString.split(" ");
+    for(String term: searchTerms){
+      foundWords = foundWords.stream().filter(instance -> (instance.searchDefinitions(term).size() > 0)).collect(Collectors.toList());
+    }
     return foundWords;
   }
 }
