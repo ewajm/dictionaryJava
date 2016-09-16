@@ -1,16 +1,13 @@
 <h1>It's (sort of) a Dictionary!</h1>
 #if($newWord)
-  <h3>$newWord.getWord() successfully added!</h3>
+  <h4>$newWord.getWord() successfully added!</h4>
 #end
 #if($words.size() > 0)
-<ul>
   #foreach($word in $words)
-    <li><a href="/word/$word.getId()">$word.getWord()</a>
-      <ul>$word.getDefinitions().size() Definition(s)</ul>
-    </li>
+    <div class="word-output"><p class="word-display"><a href="/word/$word.getId()">$word.getWord()</a></p>
+      <p="def-number">$word.getDefinitions().size() Definition(s)</p>
+    </div>
   #end
-</ul>
 #else
 <h3>No Words Yet!</h3>
 #end
-<a href="/word/new">Add New Word</a>

@@ -4,7 +4,7 @@
   <h4>New definition successfully added!</h4>
   #end
   #if($word.getDefinitions().size()>0)
-    <ul>
+    <ul class="word-defs">
     #foreach($definition in $word.getDefinitions())
       <li>$definition.getDefString()</li>
     #end
@@ -12,8 +12,6 @@
   #else
     <p>No definitions yet!</p>
   #end
-  <a href="/word/$word.getId()/def/new">Add new definition</a><br>
 #else
   <h2>Whoops! Looks like we can't find that page :(</h2>
 #end
-<a href="/">Back to All Words</a>
