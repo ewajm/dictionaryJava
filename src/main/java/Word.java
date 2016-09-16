@@ -1,6 +1,7 @@
 import java.util.List;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
+import java.util.Collections;
 
 public class Word {
   private String mWord;
@@ -58,11 +59,21 @@ public class Word {
   }
 
   public static Word find(int id){
-    return instances.get(id-1);
+    try {
+      return instances.get(id-1);
+    } catch( IndexOutOfBoundsException exception){
+      return null;
+    }
   }
 
   public static List<Word> findByDef(String searchString){
     List<Word> foundWords = instances.stream().filter(instance -> (instance.searchDefinitions(searchString).size() > 0)).collect(Collectors.toList());
     return foundWords;
+  }
+
+  public static List<Word> sort(){
+    List<Word> sortedWords = new ArrayList<Word>(instances);
+    Collections.sort(sortedWords, (word1, word2) -> word1.getWord().compareTo(word2.getWord()));
+    return sortedWords;
   }
 }

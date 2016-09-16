@@ -98,6 +98,13 @@ public class WordTest{
   }
 
   @Test
+  public void find_returnsNullIfWordNotFound_null(){
+    Word word = new Word("word");
+    Word word2 = new Word("word2");
+    assertEquals(null, Word.find(999));
+  }
+
+  @Test
   public void findByDef_returnsCorrectWord_true(){
     Word word = new Word("word");
     Definition definition = new Definition("definition");
@@ -138,5 +145,20 @@ public class WordTest{
     Definition definition2 = new Definition("something or else and stuff");
     word2.addDefinition(definition2);
     assertEquals(1, Word.findByDef("something else").size());
+  }
+
+  @Test
+  public void sort_sortsInstanceListProperly_Word(){
+    Word word = new Word("word");
+    Word word2 = new Word("apple");
+    assertEquals(word2, Word.sort().get(0));
+  }
+
+  @Test
+  public void sort_doesNotChangeInstancesList_Word(){
+    Word word = new Word("word");
+    Word word2 = new Word("apple");
+    assertEquals(word2, Word.sort().get(0));
+    assertEquals(word, Word.all().get(0));
   }
 }
