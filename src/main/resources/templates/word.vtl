@@ -1,5 +1,8 @@
 #if($word)
   <h1>$word.getWord()</h1>
+  #if($postString)
+  <h4>New definition successfully added!</h4>
+  #end
   #if($word.getDefinitions().size()>0)
     <ul>
     #foreach($definition in $word.getDefinitions())
