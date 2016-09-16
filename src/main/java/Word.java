@@ -41,7 +41,11 @@ public class Word {
   }
 
   public List<Definition> searchDefinitions(String searchString){
-    List<Definition> foundDefs = mDefinitions.stream().filter(definition -> (definition.getDefString().toLowerCase().contains(searchString))).collect(Collectors.toList());
+    String[] searchTerms = searchString.split(" ");
+    List<Definition> foundDefs = mDefinitions;
+    for(String term : searchTerms){
+      foundDefs = foundDefs.stream().filter(definition -> (definition.getDefString().toLowerCase().contains(term))).collect(Collectors.toList());
+    }
     return foundDefs;
   }
 
@@ -58,11 +62,7 @@ public class Word {
   }
 
   public static List<Word> findByDef(String searchString){
-    List<Word> foundWords = instances;
-    String[] searchTerms = searchString.split(" ");
-    for(String term: searchTerms){
-      foundWords = foundWords.stream().filter(instance -> (instance.searchDefinitions(term).size() > 0)).collect(Collectors.toList());
-    }
+    List<Word> foundWords = instances.stream().filter(instance -> (instance.searchDefinitions(searchString).size() > 0)).collect(Collectors.toList());
     return foundWords;
   }
 }

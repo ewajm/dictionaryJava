@@ -135,7 +135,7 @@ public class WordTest{
     Definition definition = new Definition("something with words");
     word.addDefinition(definition);
     Word word2 = new Word("word2");
-    Definition definition2 = new Definition("something else and stuff");
+    Definition definition2 = new Definition("something or else and stuff");
     word2.addDefinition(definition2);
     assertEquals(1, Word.findByDef("something else").size());
   }
