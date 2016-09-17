@@ -44,11 +44,19 @@ public class WordTest{
   }
 
   @Test
-  public void removeDefinition_removesDefinitionIfFound_true() {
+  public void removeDefinition_returnsTrueIfDefinitionSuccessfullyRemoved_true() {
     Word word = new Word("word");
     Definition definition = new Definition("definition");
     word.addDefinition(definition);
     assertTrue(word.removeDefinition("definition"));
+  }
+
+  @Test
+  public void removeDefinition_removesDefinitionIfFound_0() {
+    Word word = new Word("word");
+    Definition definition = new Definition("definition");
+    word.addDefinition(definition);
+    word.removeDefinition("definition");
     assertEquals(0, word.getDefinitions().size());
   }
 
@@ -105,6 +113,14 @@ public class WordTest{
   }
 
   @Test
+  public void findByDef_returnsNothingIfSearchTermNotFound_true(){
+    Word word = new Word("word");
+    Definition definition = new Definition("something else");
+    word.addDefinition(definition);
+    assertEquals(0, Word.findByDef("definition").size());
+  }
+
+  @Test
   public void findByDef_returnsCorrectWord_true(){
     Word word = new Word("word");
     Definition definition = new Definition("definition");
@@ -132,7 +148,6 @@ public class WordTest{
     Word word2 = new Word("word2");
     Definition definition2 = new Definition("something else");
     word2.addDefinition(definition2);
-    assertTrue(Word.findByDef("definition").size() > 0);
     assertTrue(!Word.findByDef("definition").contains(word2));
   }
 
@@ -158,7 +173,6 @@ public class WordTest{
   public void sort_doesNotChangeInstancesList_Word(){
     Word word = new Word("word");
     Word word2 = new Word("apple");
-    assertEquals(word2, Word.sort().get(0));
     assertEquals(word, Word.all().get(0));
   }
 }
